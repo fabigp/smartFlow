@@ -38,5 +38,5 @@ Main features:
 ---
 
 ## 👥 Contributors
-- **Alessia Sanchez, Edith Hernandez, Fabiola Garcia, Lara Miritz**
+**Alessia Sanchez, Edith Hernandez, Fabiola Garcia, Lara Miritz**
 
