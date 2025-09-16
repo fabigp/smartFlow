@@ -1,0 +1,82 @@
+erDiagram
+    ZONE {
+        string zone_id
+        string name
+        string location
+        number min_moisture
+        number max_moisture
+        array sensors
+        array irrigation_events
+        array alerts
+    }
+    
+    SENSOR {
+        string sensor_id
+        string type
+        number last_reading_value
+        string last_reading_unit
+        datetime last_reading_timestamp
+        array history
+    }
+    
+    SENSOR_HISTORY_ENTRY {
+        number value
+        string unit
+        datetime timestamp
+    }
+    
+    IRRIGATION_EVENT {
+        string event_id
+        string action
+        string pump_id
+        datetime start_time
+        datetime end_time
+        number water_used_liters
+    }
+    
+    ALERT {
+        string alert_id
+        string type
+        string message
+        datetime timestamp
+        string status
+        array channels
+    }
+    
+    USER {
+        string user_id
+        string name
+        string phone
+        string email
+        array preferred_channels
+        array zones_assigned
+    }
+    
+    WEATHER_FORECAST {
+        string forecast_id
+        string zone_id
+        date date
+        number temperature_c
+        number rain_mm
+        number humidity_percent
+        string source
+        datetime timestamp
+    }
+    
+    AI_RECOMMENDATION {
+        string rec_id
+        string zone_id
+        date date
+        string analysis
+        string suggested_action
+        string generated_by
+        datetime timestamp
+    }
+
+    ZONE ||--o{ SENSOR : contains
+    ZONE ||--o{ IRRIGATION_EVENT : has
+    ZONE ||--o{ ALERT : generates
+    SENSOR ||--o{ SENSOR_HISTORY_ENTRY : records_history
+    ZONE ||--o{ WEATHER_FORECAST : receives
+    ZONE ||--o{ AI_RECOMMENDATION : receives_recommendations
+    USER }o--o{ ZONE : manages

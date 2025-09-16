@@ -1,0 +1,147 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Smart Precision Irrigation System Database",
+  "type": "object",
+  "properties": {
+    "zones": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "zone_id": { "type": "string" },
+          "name": { "type": "string" },
+          "location": { "type": "string" },
+          "threshold": {
+            "type": "object",
+            "properties": {
+              "min_moisture": { "type": "number" },
+              "max_moisture": { "type": "number" }
+            },
+            "required": ["min_moisture", "max_moisture"]
+          },
+          "sensors": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "sensor_id": { "type": "string" },
+                "type": { "type": "string" },
+                "last_reading": {
+                  "type": "object",
+                  "properties": {
+                    "value": { "type": "number" },
+                    "unit": { "type": "string" },
+                    "timestamp": { "type": "string", "format": "date-time" }
+                  },
+                  "required": ["value", "unit", "timestamp"]
+                },
+                "history": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "value": { "type": "number" },
+                      "unit": { "type": "string" },
+                      "timestamp": { "type": "string", "format": "date-time" }
+                    },
+                    "required": ["value", "unit", "timestamp"]
+                  }
+                }
+              },
+              "required": ["sensor_id", "type", "last_reading"]
+            }
+          },
+          "irrigation_events": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "event_id": { "type": "string" },
+                "action": { "type": "string", "enum": ["manual", "automatic"] },
+                "pump_id": { "type": "string" },
+                "start_time": { "type": "string", "format": "date-time" },
+                "end_time": { "type": "string", "format": "date-time" },
+                "water_used_liters": { "type": "number" }
+              },
+              "required": ["event_id", "action", "pump_id", "start_time", "end_time"]
+            }
+          },
+          "alerts": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "alert_id": { "type": "string" },
+                "type": { "type": "string" },
+                "message": { "type": "string" },
+                "timestamp": { "type": "string", "format": "date-time" },
+                "status": { "type": "string", "enum": ["sent", "pending"] },
+                "channels": {
+                  "type": "array",
+                  "items": { "type": "string" }
+                }
+              },
+              "required": ["alert_id", "type", "message", "timestamp", "status"]
+            }
+          }
+        },
+        "required": ["zone_id", "name", "location", "threshold"]
+      }
+    },
+    "users": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "user_id": { "type": "string" },
+          "name": { "type": "string" },
+          "phone": { "type": "string" },
+          "email": { "type": "string", "format": "email" },
+          "preferred_channels": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "zones_assigned": {
+            "type": "array",
+            "items": { "type": "string" }
+          }
+        },
+        "required": ["user_id", "name", "phone"]
+      }
+    },
+    "weather_forecasts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "forecast_id": { "type": "string" },
+          "zone_id": { "type": "string" },
+          "date": { "type": "string", "format": "date" },
+          "temperature_c": { "type": "number" },
+          "rain_mm": { "type": "number" },
+          "humidity_percent": { "type": "number" },
+          "source": { "type": "string" },
+          "timestamp": { "type": "string", "format": "date-time" }
+        },
+        "required": ["forecast_id", "zone_id", "date", "temperature_c"]
+      }
+    },
+    "ai_recommendations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "rec_id": { "type": "string" },
+          "zone_id": { "type": "string" },
+          "date": { "type": "string", "format": "date" },
+          "analysis": { "type": "string" },
+          "suggested_action": { "type": "string" },
+          "generated_by": { "type": "string" },
+          "timestamp": { "type": "string", "format": "date-time" }
+        },
+        "required": ["rec_id", "zone_id", "date", "analysis"]
+      }
+    }
+  },
+  "required": ["zones", "users", "weather_forecasts", "ai_recommendations"]
+}
