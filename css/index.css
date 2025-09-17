@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+
+:root{
+    --azul_prin: #86BCD0;
+    --azul_secun: #608998;
+    --gris: #889ca3;
+    --verde-ideal: #48E530;
+    --verde-good: #62D451;
+    --verde-lacking: #B3D451;
+    --amarillo-bad: #D4B151;
+    --amarillo-verybad: #C79B23;
+    --black: black;
+    --white: rgb(237, 233, 233);
+}
+
+/*Normalización standar*/
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 1rem;
+    font-family: 'Inter', sans-serif;
+    list-style: none;
+    color: var(--black);
+    text-decoration: none;
+}
+
+body{
+    background-color: var(--white);
+}
+
+.header { /* div <header> */
+    background-color: var(--azul_prin);
+    padding: 1em;
+}    
+
+.header-title {}        /* h1 texto */
+
+.content {}             /* div principal */
+.content-up {}          /* div contenedor superior */
+
+.up-left {}             /* div */
+.left-h2 {}             /* h2 texto */
+.zones-in-trouble {}    /* div */
+.all-zones {}           /* div */
+.all-zones-irrigate {}  /* button */
+
+.up-right {}            /* div */
+.system {}              /* div */
+.system-h2 {}           /* h2 texto */
+.system-content {}      /* div */
+.system-off {}          /* button */
+.system-text {}         /* div */
+.system-p {}            /* p texto */
+.weather {}             /* div */
+
+.content-down {}        /* div contenedor inferior */
+.down-h2 {}             /* h2 texto */
+.down-zones {}          /* div */
+.down-graphic {}        /* div */
+.down-times {}          /* div */
+.weeks {}               /* button */
+.months {}              /* button */

@@ -3,9 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/index.css">
     <title>SmartFlow</title>
 </head>
 <body>
-    
+    <header class="header">
+        <h1 class="header-title">SMART FLOW</h1>
+    </header>
+    <div class="content">
+        <div class="content-up">
+            <div class="up-left">
+                <h2 class="left-h2">Moisture levels in real time</h2>
+                <div class="zones-in-trouble">
+                    <!-- funcion para determinar las zonas en peligro -->
+                </div>
+                <div class="all-zones">
+                    <!-- despliegue de todas las zonas con info-->
+                    <button class="all-zones-irrigate"><!-- Icono -->Irrigate</button>
+                </div>
+            </div>
+            <div class="up-right">
+                <div class="system">
+                    <h2 class="system-h2">System</h2>
+                    <div class="system-content">
+                        <button class="system-off"><!-- Icono --></button>
+                        <div class="system-text">
+                            <p class="system-p"><!-- porcentaje bateria --></p>
+                            <p class="system-p">batery</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="weather">
+                    <!-- wheather API -->
+                </div>
+            </div>
+        </div>
+        <div class="content-down">
+            <h2 class="down-h2">Graphics</h2>
+            <div class="down-zones">
+                <!-- despliegue de todas las zonas sin info-->
+            </div>
+            <div class="down-graphic">
+                <!-- grafica seleccionada -->
+            </div>
+            <div class="down-times">
+                <button class="weeks">Weeks</button>
+                <button class="months">Months</button>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
